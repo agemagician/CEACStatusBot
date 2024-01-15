@@ -32,6 +32,8 @@ class EmailNotificationHandle(NotificationHandle):
         msg['To'] = ";".join(self.__toEmail)
         msg.attach(MIMEText(mail_content,'plain','utf-8'))
 
+        print(mail_content)
+
         #smtp = SMTP_SSL(self.__hostAddress, self.__hostPort) # ssl登录
         #smtp = SMTP(self.__hostAddress, self.__hostPort) # ssl登录
         print(self.__hostAddress,self.__hostPort)
