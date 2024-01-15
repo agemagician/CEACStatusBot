@@ -26,6 +26,8 @@ class TelegramNotificationHandle(NotificationHandle):
             "parse_mode": "HTML"
         })
 
+        print("I am trying to send a message using telegram.")
+
         # Check the response
         if response.status_code == 200:
             print("Message sent successfully")
