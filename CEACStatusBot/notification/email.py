@@ -1,4 +1,4 @@
-from smtplib import SMTP #SMTP_SSL
+from smtplib import SMTP_SSL #SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
@@ -34,13 +34,13 @@ class EmailNotificationHandle(NotificationHandle):
 
         print(mail_content)
 
-        #smtp = SMTP_SSL(self.__hostAddress, self.__hostPort) # ssl登录
+        smtp = SMTP_SSL(self.__hostAddress, self.__hostPort) # ssl登录
         #smtp = SMTP(self.__hostAddress, self.__hostPort) # ssl登录
-        print(self.__hostAddress,self.__hostPort)
-        smtp = SMTP(self.__hostAddress, self.__hostPort)
+        #print(self.__hostAddress,self.__hostPort)
+        #smtp = SMTP(self.__hostAddress, self.__hostPort)
         #smtp.connect(self.__fromEmail,self.__hostPort)
-        smtp.ehlo()  # send the extended hello to our server
-        smtp.starttls()  # tell server we want to communicate with TLS encryption
+        #smtp.ehlo()  # send the extended hello to our server
+        #smtp.starttls()  # tell server we want to communicate with TLS encryption
 
         print(smtp.login(self.__fromEmail,self.__emailPassword))
         print(smtp.sendmail(self.__fromEmail,self.__toEmail,msg.as_string()))
