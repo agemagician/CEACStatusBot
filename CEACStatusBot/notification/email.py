@@ -34,6 +34,7 @@ class EmailNotificationHandle(NotificationHandle):
 
         #smtp = SMTP_SSL(self.__hostAddress, self.__hostPort) # ssl登录
         #smtp = SMTP(self.__hostAddress, self.__hostPort) # ssl登录
+        print(self.__hostAddress,self.__hostPort)
         smtp = SMTP(self.__hostAddress, 25)
         smtp.connect(self.__hostAddress,self.__hostPort)
         print(smtp.login(self.__fromEmail,self.__emailPassword))
