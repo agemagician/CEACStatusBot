@@ -2,6 +2,7 @@ import requests
 import json
 import html
 from .handle import NotificationHandle
+import telebot
 
 class TelegramNotificationHandle(NotificationHandle):
     def __init__(self, bot_token: str, chat_id: str) -> None:
@@ -9,6 +10,7 @@ class TelegramNotificationHandle(NotificationHandle):
         self.__bot_token = bot_token
         self.__chat_id = chat_id
         self.__api_url = f"https://api.telegram.org/bot{self.__bot_token}/sendMessage"
+        self.__bot = telebot.TeleBot(bot_token)
 
     def send(self, result):
         # {'success': True, 'visa_type': 'NONIMMIGRANT VISA APPLICATION', 'status': 'Issued', 'case_created': '30-Aug-2022', 'case_last_updated': '19-Oct-2022', 'description': 'Your visa is in final processing. If you have not received it in more than 10 working days, please see the webpage for contact information of the embassy or consulate where you submitted your application.', 'application_num': '***'}
@@ -27,6 +29,7 @@ class TelegramNotificationHandle(NotificationHandle):
         })
 
         print("I am trying to send a message using telegram.")
+        self.__bot.send_message(self.__chat_id,message_text)
 
         # Check the response
         if response.status_code == 200:
