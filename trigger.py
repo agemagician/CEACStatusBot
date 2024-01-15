@@ -19,6 +19,7 @@ try:
     if FROM and TO and PASSWORD:
         emailNotificationHandle = EmailNotificationHandle(FROM,TO,PASSWORD,SMTP)
         notificationManager.addHandle(emailNotificationHandle)
+    print("A notification will be sent using email")
 except KeyError:
     print("Email notification config error")
 
@@ -28,7 +29,9 @@ try:
     if BOT_TOKEN and CHAT_ID:
         tgNotif = TelegramNotificationHandle(BOT_TOKEN,CHAT_ID)
         notificationManager.addHandle(tgNotif)
+    print("A notification will be sent using telegram")
 except KeyError:
     print("Telegram bot notification config error")
 
 notificationManager.send()
+print("A notifcation was sent")
